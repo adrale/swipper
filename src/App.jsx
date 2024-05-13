@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
+import Header from "./components/Header"
+import Footer from "./components/Footer"
 import './App.css'
-import SwipperCard from './components/SwipperCard'
+import SwipperLogic from "./components/SwipperLogic"
+
 
 function App() {
   const [lover, setLover] = useState({});
@@ -25,9 +28,12 @@ function App() {
 
   return (
     <>
-      <SwipperCard lover={lover} loading={loading}/>
+    <Header />
+    <Footer />
+    <SwipperLogic lover={lover} loading={loading}/>
     </>
-  )
-}
+  
+  )}
+
 
 export default App
