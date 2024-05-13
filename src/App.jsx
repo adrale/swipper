@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import Header from "./components/Header"
-import Footer from "./components/Footer"
-import './App.css'
-import SwipperLogic from "./components/SwipperLogic"
-
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import SwipperLogic from "./components/SwipperLogic";
+import'./App.css'
 
 function App() {
-  const [lover, setLover] = useState({});
+  const [lovers, setLovers] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -14,26 +13,25 @@ function App() {
   }, []);
 
   const fetchLover = () => {
-    fetch("https://randomuser.me/api?nat=en")
+    fetch("https://randomuser.me/api?nat=en&results=5") // Fetching 5 lovers
       .then((res) => res.json())
       .then((data) => {
-        setLover(data.results[0]);
+        setLovers(data.results);
         setLoading(false);
       })
       .catch((error) => {
-        console.error("Erreur lors de la récupération du Lover :", error);
+        console.error("Erreur lors de la récupération des amoureux :", error);
         setLoading(false);
       });
   };
 
   return (
     <>
-    <Header />
-    <Footer />
-    <SwipperLogic lover={lover} loading={loading}/>
+      <Header />
+      <Footer />
+      <SwipperLogic lovers={lovers} loading={loading} />
     </>
-  
-  )}
+  );
+}
 
-
-export default App
+export default App;
