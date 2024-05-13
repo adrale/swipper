@@ -1,24 +1,25 @@
-import React from 'react';
-
-const SwipperCard = ({ profil, onLike, onDislike }) => {
+export default function SwipperCard({ lover, loading, onLike, onDislike }) {
   return (
-    <article className="card">
-      <section className="card-content">
-        <img src={profil.image} alt={profil.name} className="profil-image" />
-        <h2>{profil.name}</h2>
-        <p>{profil.age}</p>
-        <p>{profil.description}</p>
-      </section>
-      <section className="card-button">
-        <button onClick={() => onDislike(profil)} className="dislike-button">
-         😠
-        </button>
-        <button onClick={() => onLike(profil)} className="like-button">
-          😍
-        </button>
-      </section>
-    </article>
+    loading ? (
+      <p>Loading...</p>
+    ) : (
+      <>
+        <article className="card">
+          <section className="card-content">
+            <img src={lover.picture.large} alt={lover.name.first} className="lover-picture" />
+            <h2>{lover.name.first}</h2>
+            <p>{lover.age}</p>
+          </section>
+          <section className="card-button">
+            <button onClick={() => onDislike(lover)} className="dislike-button">
+              😠
+            </button>
+            <button onClick={() => onLike(lover)} className="like-button">
+              😍
+            </button>
+          </section>
+        </article>
+      </>
+    )
   );
 };
-
-export default SwipperCard;
