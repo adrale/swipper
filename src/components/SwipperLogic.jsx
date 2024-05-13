@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Card from '../components/SwipperCard';
+import SwipperCard from '../components/SwipperCard';
 
 const SwipperLogic = ({ profil }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
